@@ -1,4 +1,4 @@
-FROM jamshidian/php-nginx-base:php8.1.3-fpm-nginx1.20.2-alpine3.15
+FROM jamshidian9898/laravel-nginx:latest
 
 # set composer related environment variables
 ENV PATH="/composer/vendor/bin:$PATH" \
