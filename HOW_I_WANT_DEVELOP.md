@@ -10,7 +10,7 @@
 
 # Services:
 
-- Traefik : reverse proxy and load balancer                     []
+- Traefik : reverse proxy and load balancer                     [base implemented]
 - RabbitMQ : message broker                                     []
 - UI : web panel (laravel)                                      [base implemented]
 - Tracker : post tracker service (flask)                        []
