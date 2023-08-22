@@ -7,9 +7,11 @@
 - mysql and sqlite and redis : persistance database and store data
 - laravel : front-end and back-end of panel
 - flask : other services in back-end
+- phpMyAdmin : access to database on web
 
 # Services:
 
+- phpMyAdmin : access to database on web                        [OK]
 - Traefik : reverse proxy and load balancer                     [base implemented]
 - RabbitMQ : message broker                                     []
 - UI : web panel (laravel)                                      [base implemented]
