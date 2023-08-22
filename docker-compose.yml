@@ -131,6 +131,32 @@ services:
     networks:
       - default
 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+    volumes:
+        - ./rabbitmq/data/:/var/lib/rabbitmq/
+        - ./rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
+      - "traefik.http.routers.rabbitmq.entrypoints=http"
+      - "traefik.http.routers.rabbitmq.rule=Host(`${RABBITMQ_DOMAIN}`)"
+      - "traefik.http.routers.rabbitmq.service=rabbitmq-secure"
+      - "traefik.http.routers.rabbitmq.middlewares=https-redirect"
+      - "traefik.http.routers.rabbitmq-secure.entrypoints=https"
+      - "traefik.http.routers.rabbitmq-secure.rule=Host(`${RABBITMQ_DOMAIN}`)"
+      - "traefik.http.routers.rabbitmq-secure.tls=true"
+      - "traefik.http.routers.rabbitmq-secure.tls.options=default"
+      - "traefik.http.routers.rabbitmq-secure.tls.certresolver=mycert"
+      - "traefik.http.routers.rabbitmq-secure.service=rabbitmq-secure"
+      - "traefik.http.services.rabbitmq-secure.loadbalancer.server.port=${RABBITMQ_PORT}"
+
+
 volumes:
   mysql-data:
     name: mysql-data
