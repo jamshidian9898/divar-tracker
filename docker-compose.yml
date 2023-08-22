@@ -33,7 +33,7 @@ services:
       - DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
     labels:
       - "traefik.enable=true"
-      - "traefik.docker.network=web_net"
+      - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
       - "traefik.http.routers.ui.entrypoints=http"
       - "traefik.http.routers.ui.rule=Host(`${UI_DOMAIN}`)"
       - "traefik.http.routers.ui.service=ui-secure"
@@ -90,7 +90,7 @@ services:
       - "traefik.http.routers.traefik.rule=Host(`${TRAEFIK_PANEL_DOMAIN}`)"
       - "traefik.http.routers.traefik.middlewares=https-redirect"
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.web-auth.basicauth.users=${TRAEFIK_PANEL_USER}:${TRAEFIK_PANEL_PASSWORD}"
+      - "traefik.http.middlewares.web-auth.basicauth.users=${TRAEFIK_PANEL_AUTH}"
       - "traefik.http.routers.traefik-secure.middlewares=web-auth"
       - "traefik.http.routers.traefik-secure.entrypoints=https"
       - "traefik.http.routers.traefik-secure.rule=Host(`${TRAEFIK_PANEL_DOMAIN}`)"
