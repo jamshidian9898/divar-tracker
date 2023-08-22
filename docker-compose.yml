@@ -11,6 +11,35 @@ services:
     networks:
       - default
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: ${MYSQL_PORT}
+      PMA_ARBITRARY: 1
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
+      - "traefik.http.routers.phpmyadmin.entrypoints=http"
+      - "traefik.http.routers.phpmyadmin.rule=Host(`${PHP_MY_ADMIN_DOMAIN}`)"
+      - "traefik.http.routers.phpmyadmin.service=phpmyadmin-secure"
+      - "traefik.http.routers.phpmyadmin.middlewares=https-redirect"
+      - "traefik.http.routers.phpmyadmin-secure.entrypoints=https"
+      - "traefik.http.routers.phpmyadmin-secure.rule=Host(`${PHP_MY_ADMIN_DOMAIN}`)"
+      - "traefik.http.routers.phpmyadmin-secure.tls=true"
+      - "traefik.http.routers.phpmyadmin-secure.tls.options=default"
+      - "traefik.http.routers.phpmyadmin-secure.tls.certresolver=mycert"
+      - "traefik.http.routers.phpmyadmin-secure.service=phpmyadmin-secure"
+      - "traefik.http.services.phpmyadmin-secure.loadbalancer.server.port=${PHP_MY_ADMIN_PORT}"
+      - "traefik.http.middlewares.web-auth.basicauth.users=user:$$apr1$$M0wF5tgw$$t48gnABAdHNtGcclbZEl2/"
+      - "traefik.http.routers.phpmyadmin-secure.middlewares=web-auth"
+    restart: always
+    networks:
+      - default
+
   ui:
     build: ./UI
     entrypoint: /usr/local/bin/docker-php-entrypoint-dev
