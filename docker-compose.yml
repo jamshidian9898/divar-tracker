@@ -156,7 +156,7 @@ services:
       - "traefik.http.routers.rabbitmq-secure.service=rabbitmq-secure"
       - "traefik.http.services.rabbitmq-secure.loadbalancer.server.port=${RABBITMQ_PORT}"
       - "traefik.http.middlewares.web-auth.basicauth.users=user:$$apr1$$M0wF5tgw$$t48gnABAdHNtGcclbZEl2/"
-      - "traefik.http.routers.phpmyadmin-secure.middlewares=web-auth"
+      - "traefik.http.routers.rabbitmq-secure.middlewares=web-auth"
 
 
 
