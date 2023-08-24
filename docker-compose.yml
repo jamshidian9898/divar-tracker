@@ -135,12 +135,12 @@ services:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
     ports:
-        - 5672:5672
+      - 5672:5672
     volumes:
-        - ./rabbitmq/data/:/var/lib/rabbitmq/
-        - ./rabbitmq/log/:/var/log/rabbitmq
+      - ./rabbitmq/data/:/var/lib/rabbitmq/
+      - ./rabbitmq/log/:/var/log/rabbitmq
     networks:
-        - default
+      - default
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
@@ -158,7 +158,26 @@ services:
       # - "traefik.http.middlewares.web-auth.basicauth.users=user:$$apr1$$M0wF5tgw$$t48gnABAdHNtGcclbZEl2/"
       # - "traefik.http.routers.rabbitmq-secure.middlewares=web-auth"
 
-
+  react:
+    build: ./React
+    volumes:
+      - ./React/app:/app/src
+    networks:
+      - default
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
+      - "traefik.http.routers.react.entrypoints=http"
+      - "traefik.http.routers.react.rule=Host(`${REACT_DOMAIN}`)"
+      - "traefik.http.routers.react.service=react-secure"
+      - "traefik.http.routers.react.middlewares=https-redirect"
+      - "traefik.http.routers.react-secure.entrypoints=https"
+      - "traefik.http.routers.react-secure.rule=Host(`${REACT_DOMAIN}`)"
+      - "traefik.http.routers.react-secure.tls=true"
+      - "traefik.http.routers.react-secure.tls.options=default"
+      - "traefik.http.routers.react-secure.tls.certresolver=mycert"
+      - "traefik.http.routers.react-secure.service=react-secure"
+      - "traefik.http.services.react-secure.loadbalancer.server.port=${REACT_PORT}"
 
 volumes:
   mysql-data:
