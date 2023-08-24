@@ -7,6 +7,8 @@ destroy:
 	docker-compose down --volumes
 build:
 	docker-compose up --detach --build
+log:
+	docker-compose logs -f
 
 
 
