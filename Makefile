@@ -14,19 +14,25 @@ log:
 
 # -------------------internal traefik container commands-------------------
 traefik-shell:
-	docker-compose exec ui sh
+	docker-compose exec traefik sh
+
+
+
+# -------------------internal rabbitmq container commands-------------------
+rabbitmq-shell:
+	docker-compose exec rabbitmq sh
 
 
 
 # -------------------internal phpmyadmin container commands-------------------
 phpmyadmin-shell:
-	docker-compose exec ui sh
+	docker-compose exec phpmyadmin sh
 
 
 
 # -------------------internal mysql container commands-------------------
 mysql-shell:
-	docker-compose exec ui sh
+	docker-compose exec mysql sh
 
 
 
