@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormattedMessage} from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import {
     IconAtom,
@@ -107,10 +107,10 @@ const menuItems = {
             type: 'group',
             children: [
                 {
-                    id: 'dash-default',
-                    title: <FormattedMessage id="default" />,
+                    id: 'dashboard',
+                    title: <FormattedMessage id="dashboard" />,
                     type: 'item',
-                    url: '/dashboard/default',
+                    url: '/dashboard',
                     icon: icons['IconDashboard'],
                     breadcrumbs: false
                 }
@@ -118,118 +118,27 @@ const menuItems = {
         },
 
         {
-            id: 'pages',
-            title: <FormattedMessage id="pages" />,
-            caption: <FormattedMessage id="pages-caption" />,
+            id: 'setting',
+            title: <FormattedMessage id="setting" />,
+            caption: <FormattedMessage id="setting-caption" />,
             type: 'group',
             children: [
                 {
                     id: 'authentication',
                     title: <FormattedMessage id="authentication" />,
-                    type: 'collapse',
+                    type: 'item',
                     icon: icons['IconKey'],
-                    children: [
-
-
-
-
-                                {
-                                    id: 'login3',
-                                    title: <FormattedMessage id="login" />,
-                                    type: 'item',
-                                    url: '/pages/login/login3',
-                                    target: true
-                                },
-                                {
-                                    id: 'register3',
-                                    title: <FormattedMessage id="register" />,
-                                    type: 'item',
-                                    url: '/pages/register/register3',
-                                    target: true
-                                }
-
-
-
-
-
-
-                    ]
+                    url: '/authentication',
                 },
-
-
-
-            ]
-        },
-        {
-            id: 'utilities',
-            title: <FormattedMessage id="utilities" />,
-            type: 'group',
-            children: [
                 {
-                    id: 'util-typography',
-                    title: <FormattedMessage id="typography" />,
+                    id: 'profile',
+                    title: <FormattedMessage id="profile" />,
                     type: 'item',
-                    url: '/utils/util-typography',
-                    icon: icons['IconTypography']
-                },
-                {
-                    id: 'color',
-                    title: <FormattedMessage id="color" />,
-                    type: 'item',
-                    url: '/utils/util-color',
-                    icon: icons['IconPalette']
-                },
-                {
-                    id: 'shadow',
-                    title: <FormattedMessage id="shadow" />,
-                    type: 'item',
-                    url: '/utils/util-shadow',
-                    icon: icons['IconShadow']
-                },
-                {
-                    id: 'icons',
-                    title: <FormattedMessage id="icons" />,
-                    type: 'collapse',
-                    icon: icons['IconPencil'],
-                    children: [
-                        {
-                            id: 'util-tabler-icons',
-                            title: <FormattedMessage id="tabler-icons" />,
-                            type: 'item',
-                            url: '/icons/tabler-icons'
-                        },
-                        {
-                            id: 'util-material-icons',
-                            title: <FormattedMessage id="material-icons" />,
-                            type: 'item',
-                            url: '/icons/material-icons'
-                        }
-                    ]
+                    icon: icons['IconUser'],
+                    url: '/profile',
                 }
             ]
         },
-        {
-            id: 'sample-docs-roadmap',
-            type: 'group',
-            children: [
-                {
-                    id: 'sample-page',
-                    title: <FormattedMessage id="sample-page" />,
-                    type: 'item',
-                    url: '/sample-page',
-                    icon: icons['IconBrandChrome']
-                },
-                {
-                    id: 'documentation',
-                    title: <FormattedMessage id="documentation" />,
-                    type: 'item',
-                    url: '#',
-                    icon: icons['IconHelp'],
-                    target: true,
-                    external: true
-                }
-            ]
-        }
     ]
 };
 

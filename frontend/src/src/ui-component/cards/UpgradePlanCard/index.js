@@ -57,11 +57,11 @@ const UpgradePlanCard = () => {
                     </Grid>
                     <Grid item>
                         <Typography variant="subtitle2" className={classes.tagLine}>
-                            For more premium pages &#38; features<br />
+                            For more premium features<br />
                         </Typography>
                     </Grid>
                     <Grid item>
-                        <Button variant="link" href="https://berrydashboard.io" target="_blank" className={classes.button} disableElevation>
+                        <Button variant="link" href="#" target="_blank" className={classes.button} disableElevation>
                             Get Berry
                         </Button>
                     </Grid>

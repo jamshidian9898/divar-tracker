@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, CardContent, Grid, makeStyles, Typography} from '@material-ui/core';
+import { Card, CardContent, Grid, makeStyles, Typography } from '@material-ui/core';
 import Chart from 'react-apexcharts';
 import supportChart from './support-chart';
 
@@ -34,7 +34,7 @@ const BajajCard = () => {
                         <Grid container alignItems="center" justifyContent="space-between">
                             <Grid item>
                                 <Typography variant="subtitle1" color="inherit" className={classes.fontStyle}>
-                                    Bajaj Finsery
+                                    account balance
                                 </Typography>
                             </Grid>
                             <Grid item>
@@ -44,11 +44,11 @@ const BajajCard = () => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                         <Typography variant="subtitle2" className={classes.errorLight}>
                             10% Profit
                         </Typography>
-                    </Grid>
+                    </Grid> */}
                 </Grid>
                 <Chart {...supportChart} />
             </CardContent>

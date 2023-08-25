@@ -68,7 +68,7 @@ const PopularCard = () => {
                     <Grid item xs={12}>
                         <Grid container alignContent="center" justifyContent="space-between">
                             <Grid item>
-                                <Typography variant="h4">Popular Stocks</Typography>
+                                <Typography variant="h4">Account summery</Typography>
                             </Grid>
                             <Grid item>
                                 <MoreHorizOutlinedIcon
@@ -110,14 +110,14 @@ const PopularCard = () => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Typography variant="subtitle1" color="inherit">
-                                            Bajaj Finsery
+                                            Increase By Crypto
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Grid container alignItems="center" justifyContent="space-between">
                                             <Grid item>
                                                 <Typography variant="subtitle1" color="inherit">
-                                                    $1839.00
+                                                    $100.00
                                                 </Typography>
                                             </Grid>
                                             <Grid item>
@@ -131,7 +131,7 @@ const PopularCard = () => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="subtitle2" className={classes.successDark}>
-                                    10% Profit
+                                #4564321
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -141,14 +141,14 @@ const PopularCard = () => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Typography variant="subtitle1" color="inherit">
-                                            TTML
+                                        Decrease By Request #485645
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Grid container alignItems="center" justifyContent="space-between">
                                             <Grid item>
                                                 <Typography variant="subtitle1" color="inherit">
-                                                    $100.00
+                                                    $11.50
                                                 </Typography>
                                             </Grid>
                                             <Grid item>
@@ -162,7 +162,7 @@ const PopularCard = () => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="subtitle2" className={classes.errorDark}>
-                                    10% loss
+                                    #546354
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -172,7 +172,7 @@ const PopularCard = () => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Typography variant="subtitle1" color="inherit">
-                                            Reliance
+                                        Increase By Online Gateway
                                         </Typography>
                                     </Grid>
                                     <Grid item>
@@ -193,7 +193,7 @@ const PopularCard = () => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="subtitle2" className={classes.successDark}>
-                                    10% Profit
+                                    #4585552
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -203,7 +203,7 @@ const PopularCard = () => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Typography variant="subtitle1" color="inherit">
-                                            TTML
+                                        Decrease By Request #485458
                                         </Typography>
                                     </Grid>
                                     <Grid item>
@@ -224,7 +224,7 @@ const PopularCard = () => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="subtitle2" className={classes.errorDark}>
-                                    10% loss
+                                    #46857465956456
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -234,14 +234,14 @@ const PopularCard = () => {
                                 <Grid container alignItems="center" justifyContent="space-between">
                                     <Grid item>
                                         <Typography variant="subtitle1" color="inherit">
-                                            Suzlon
+                                        Decrease By Request #4877854
                                         </Typography>
                                     </Grid>
                                     <Grid item>
                                         <Grid container alignItems="center" justifyContent="space-between">
                                             <Grid item>
                                                 <Typography variant="subtitle1" color="inherit">
-                                                    $189.00
+                                                    $42.50
                                                 </Typography>
                                             </Grid>
                                             <Grid item>
@@ -255,7 +255,7 @@ const PopularCard = () => {
                             </Grid>
                             <Grid item>
                                 <Typography variant="subtitle2" className={classes.errorDark}>
-                                    10% loss
+                                    #7895654262
                                 </Typography>
                             </Grid>
                         </Grid>

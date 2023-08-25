@@ -201,7 +201,7 @@ const ProfileSection = () => {
                                                 <Typography variant="subtitle2">Project Admin</Typography>
                                             </Grid>
                                         </Grid>
-                                        <OutlinedInput
+                                        {/* <OutlinedInput
                                             className={classes.searchControl}
                                             id="input-search-profile"
                                             value={value}
@@ -217,7 +217,7 @@ const ProfileSection = () => {
                                                 'aria-label': 'weight'
                                             }}
                                             labelWidth={0}
-                                        />
+                                        /> */}
                                         <Divider />
                                         <PerfectScrollbar className={classes.ScrollHeight}>
                                             <UpgradePlanCard />

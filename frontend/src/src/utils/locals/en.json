@@ -74,8 +74,8 @@
     "toggle-button": "Toggle Button",
     "treeview": "Treeview",
 
-    "pages": "Pages",
-    "pages-caption": "Prebuild Pages",
+    "setting": "Setting",
+    "setting-caption": "Setting Pages",
     "authentication": "Authentication",
     "login": "Login",
     "register": "Register",
