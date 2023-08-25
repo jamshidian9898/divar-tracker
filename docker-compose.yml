@@ -40,8 +40,8 @@ services:
     networks:
       - default
 
-  ui:
-    build: ./UI
+  backend:
+    build: ./backend
     entrypoint: /usr/local/bin/docker-php-entrypoint-dev
     command:
       [
@@ -51,7 +51,7 @@ services:
         "/etc/supervisord.conf"
       ]
     volumes:
-      - ./UI/src:/var/www/app
+      - ./backend/src:/var/www/app
     environment:
       - APP_ENV=local
       - APP_KEY=base64:tLmYfUrrZITzLIkSjFnV+PCAFxkdU+duUxjVSIlrrHo=
@@ -65,17 +65,17 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
-      - "traefik.http.routers.ui.entrypoints=http"
-      - "traefik.http.routers.ui.rule=Host(`${UI_DOMAIN}`)"
-      - "traefik.http.routers.ui.service=ui-secure"
-      - "traefik.http.routers.ui.middlewares=https-redirect"
-      - "traefik.http.routers.ui-secure.entrypoints=https"
-      - "traefik.http.routers.ui-secure.rule=Host(`${UI_DOMAIN}`)"
-      - "traefik.http.routers.ui-secure.tls=true"
-      - "traefik.http.routers.ui-secure.tls.options=default"
-      - "traefik.http.routers.ui-secure.tls.certresolver=mycert"
-      - "traefik.http.routers.ui-secure.service=ui-secure"
-      - "traefik.http.services.ui-secure.loadbalancer.server.port=${UI_PORT}"
+      - "traefik.http.routers.backend.entrypoints=http"
+      - "traefik.http.routers.backend.rule=Host(`${BACKEND_DOMAIN}`)"
+      - "traefik.http.routers.backend.service=backend-secure"
+      - "traefik.http.routers.backend.middlewares=https-redirect"
+      - "traefik.http.routers.backend-secure.entrypoints=https"
+      - "traefik.http.routers.backend-secure.rule=Host(`${BACKEND_DOMAIN}`)"
+      - "traefik.http.routers.backend-secure.tls=true"
+      - "traefik.http.routers.backend-secure.tls.options=default"
+      - "traefik.http.routers.backend-secure.tls.certresolver=mycert"
+      - "traefik.http.routers.backend-secure.service=backend-secure"
+      - "traefik.http.services.backend-secure.loadbalancer.server.port=${BACKEND_PORT}"
     restart: unless-stopped
     depends_on:
       - mysql
@@ -158,26 +158,34 @@ services:
       # - "traefik.http.middlewares.web-auth.basicauth.users=user:$$apr1$$M0wF5tgw$$t48gnABAdHNtGcclbZEl2/"
       # - "traefik.http.routers.rabbitmq-secure.middlewares=web-auth"
 
-  react:
-    build: ./React
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
     volumes:
-      - ./React/app:/app/src
+      - './frontend/src:/app'
+      - '/app/node_modules'
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     networks:
       - default
     labels:
       - "traefik.enable=true"
       - "traefik.docker.network=${DOCKER_NETWORK_NAME}"
-      - "traefik.http.routers.react.entrypoints=http"
-      - "traefik.http.routers.react.rule=Host(`${REACT_DOMAIN}`)"
-      - "traefik.http.routers.react.service=react-secure"
-      - "traefik.http.routers.react.middlewares=https-redirect"
-      - "traefik.http.routers.react-secure.entrypoints=https"
-      - "traefik.http.routers.react-secure.rule=Host(`${REACT_DOMAIN}`)"
-      - "traefik.http.routers.react-secure.tls=true"
-      - "traefik.http.routers.react-secure.tls.options=default"
-      - "traefik.http.routers.react-secure.tls.certresolver=mycert"
-      - "traefik.http.routers.react-secure.service=react-secure"
-      - "traefik.http.services.react-secure.loadbalancer.server.port=${REACT_PORT}"
+      - "traefik.http.routers.frontend.entrypoints=http"
+      - "traefik.http.routers.frontend.rule=Host(`${FRONTEND_DOMAIN}`)"
+      - "traefik.http.routers.frontend.service=frontend-secure"
+      - "traefik.http.routers.frontend.middlewares=https-redirect"
+      - "traefik.http.routers.frontend-secure.entrypoints=https"
+      - "traefik.http.routers.frontend-secure.rule=Host(`${FRONTEND_DOMAIN}`)"
+      - "traefik.http.routers.frontend-secure.tls=true"
+      - "traefik.http.routers.frontend-secure.tls.options=default"
+      - "traefik.http.routers.frontend-secure.tls.certresolver=mycert"
+      - "traefik.http.routers.frontend-secure.service=frontend-secure"
+      - "traefik.http.services.frontend-secure.loadbalancer.server.port=${FRONTEND_PORT}"
 
 volumes:
   mysql-data:
