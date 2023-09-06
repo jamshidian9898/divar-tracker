@@ -2,13 +2,13 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 
 import { gridSpacing } from '../../store/constant';
-import RequestTable from './RequestTable';
+import RequestTable from '../dashboard/RequestTable';
 
 import TotalIncomePatternCard from '../../ui-component/cards/TotalIncomePatternCard';
 import TotalIncomeCard from '../../ui-component/cards/TotalIncomeCard';
 import PopularCard from '../../ui-component/cards/PopularCard';
 
-const Dashboard = () => {
+const Manage = () => {
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item xs={12}>
@@ -35,4 +35,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Manage;

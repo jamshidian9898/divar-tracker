@@ -4,7 +4,7 @@ import MinimalLayout from '../layout/MinimalLayout';
 import NavMotion from '../layout/NavMotion';
 
 
-const AuthLogin = lazy(() => import('../views/pages/authentication/login'));
+const AuthLogin = lazy(() => import('../views/authentication/login'));
 
 const LoginRoutes = () => {
     const location = useLocation();

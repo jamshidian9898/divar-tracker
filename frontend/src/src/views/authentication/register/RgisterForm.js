@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useSelector} from 'react-redux';
 import clsx from 'clsx';
 import * as Yup from 'yup';
 import {Formik} from 'formik';
-import {useSelector} from 'react-redux';
 import {
     Box,
     Button,
@@ -17,15 +17,16 @@ import {
     InputLabel,
     makeStyles,
     OutlinedInput,
+    TextField,
     Typography
 } from '@material-ui/core';
 import {Link} from 'react-router-dom';
 
-import useScriptRef from '../../../../hooks/useScriptRef';
+import useScriptRef from '../../../hooks/useScriptRef';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import Google from './../../../../assets/images/icons/social-google.svg';
+import {strengthColor, strengthIndicator} from '../../../utils/password-strength';
 
 const useStyles = makeStyles((theme) => ({
     root: {},
@@ -60,8 +61,7 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: theme.spacing(1)
     },
     forgot: {
-        textDecoration: 'none',
-        color: theme.palette.purple.main
+        textDecoration: 'none'
     },
     loginIcon: {
         marginRight: '16px',
@@ -106,16 +106,15 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const FirebaseLogin = (props, {className, ...rest}) => {
+const RgisterForm = ({className, ...rest}) => {
     const classes = useStyles();
-    const customization = useSelector((state) => state.customization);
     const scriptedRef = useScriptRef();
+    const customization = useSelector((state) => state.customization);
     const [showPassword, setShowPassword] = React.useState(false);
     const [checked, setChecked] = React.useState(true);
 
-    const googleHandler = async () => {
-
-    };
+    const [strength, setStrength] = React.useState(0);
+    const [level, setLevel] = React.useState('');
 
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -125,40 +124,23 @@ const FirebaseLogin = (props, {className, ...rest}) => {
         event.preventDefault();
     };
 
+    const changePassowd = (value) => {
+        const temp = strengthIndicator(value);
+        setStrength(temp);
+        setLevel(strengthColor(temp));
+    };
+
+    useEffect(() => {
+        changePassowd('123456');
+    }, []);
+
     return (
         <React.Fragment>
             <Grid container direction="column" justifyContent="center" spacing={2}>
-                <Grid item xs={12}>
-                    <Button
-                        disableElevation
-                        fullWidth={true}
-                        className={classes.redButton}
-                        onClick={googleHandler}
-                        size="large"
-                        variant="contained"
-                    >
-                        <img src={Google} alt="google" width="20px" className={classes.loginIcon} /> Sign in with Google
-                    </Button>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box alignItems="center" display="flex">
-                        <Divider className={classes.signDivider} orientation="horizontal" />
-                        <Button
-                            variant="outlined"
-                            className={classes.signText}
-                            sx={{borderRadius: customization.borderRadius + 'px'}}
-                            disableRipple
-                            disabled
-                        >
-                            OR
-                        </Button>
-                        <Divider className={classes.signDivider} orientation="horizontal" />
-                    </Box>
-                </Grid>
                 <Grid item xs={12} container alignItems="center" justifyContent="center">
                     <Box mb={2}>
                         <Typography variant="subtitle1" className={classes.title}>
-                            Sign in with Email address
+                            Sign up with Email address
                         </Typography>
                     </Box>
                 </Grid>
@@ -193,21 +175,47 @@ const FirebaseLogin = (props, {className, ...rest}) => {
             >
                 {({errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values}) => (
                     <form noValidate onSubmit={handleSubmit} className={clsx(classes.root, className)} {...rest}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    label="First Name"
+                                    margin="normal"
+                                    name="fname"
+                                    type="text"
+                                    defaultValue="Joseph"
+                                    variant="outlined"
+                                    className={classes.loginput}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    fullWidth
+                                    label="Last Name"
+                                    margin="normal"
+                                    name="lname"
+                                    type="text"
+                                    defaultValue="Doe"
+                                    variant="outlined"
+                                    className={classes.loginput}
+                                />
+                            </Grid>
+                        </Grid>
                         <FormControl
                             fullWidth
                             error={Boolean(touched.email && errors.email)}
                             className={classes.loginput}
                             variant="outlined"
                         >
-                            <InputLabel htmlFor="outlined-adornment-email-login">Email Address / Username</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-email-register">Email Address / Username</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-email-login"
+                                id="outlined-adornment-email-register"
                                 type="email"
                                 value={values.email}
                                 name="email"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                label='Email Address / Username'
+                                labelWidth={70}
                                 inputProps={{
                                     classes: {
                                         notchedOutline: classes.notchedOutline
@@ -215,7 +223,7 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                                 }}
                             />
                             {touched.email && errors.email && (
-                                <FormHelperText error id="standard-weight-helper-text-email-login">
+                                <FormHelperText error id="standard-weight-helper-text--register">
                                     {' '}
                                     {errors.email}{' '}
                                 </FormHelperText>
@@ -228,14 +236,17 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                             className={classes.loginput}
                             variant="outlined"
                         >
-                            <InputLabel htmlFor="outlined-adornment-password-login">Password</InputLabel>
+                            <InputLabel htmlFor="outlined-adornment-password-register">Password</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-password-login"
+                                id="outlined-adornment-password-register"
                                 type={showPassword ? 'text' : 'password'}
                                 value={values.password}
                                 name="password"
                                 onBlur={handleBlur}
-                                onChange={handleChange}
+                                onChange={(e) => {
+                                    handleChange(e);
+                                    changePassowd(e.target.value);
+                                }}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
@@ -248,7 +259,7 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                label='Password'
+                                labelWidth={70}
                                 inputProps={{
                                     classes: {
                                         notchedOutline: classes.notchedOutline
@@ -256,12 +267,30 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                                 }}
                             />
                             {touched.password && errors.password && (
-                                <FormHelperText error id="standard-weight-helper-text-password-login">
+                                <FormHelperText error id="standard-weight-helper-text-password-register">
                                     {' '}
                                     {errors.password}{' '}
                                 </FormHelperText>
                             )}
                         </FormControl>
+
+                        {strength !== 0 && (
+                            <FormControl fullWidth>
+                                <Box mb={2}>
+                                    <Grid container spacing={2} alignItems="center">
+                                        <Grid item>
+                                            <Box width={85} height={8} borderRadius={7} backgroundColor={level.color}></Box>
+                                        </Grid>
+                                        <Grid item>
+                                            <Typography variant="subtitle1" fontSize="0.75rem">
+                                                {level.label}
+                                            </Typography>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </FormControl>
+                        )}
+
                         <Grid container alignItems="center" justifyContent="space-between">
                             <Grid item>
                                 <FormControlLabel
@@ -273,14 +302,17 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                                             color="primary"
                                         />
                                     }
-                                    label={<React.Fragment>Keep me logged in</React.Fragment>}
+                                    label={
+                                        <React.Fragment>
+                                            <Typography variant="subtitle1">
+                                                Agree with &nbsp;
+                                                <Typography variant="subtitle1" component={Link} to="#">
+                                                    Terms & Condition.
+                                                </Typography>
+                                            </Typography>
+                                        </React.Fragment>
+                                    }
                                 />
-                            </Grid>
-                            <Grid item>
-                                <Typography
-                                    variant="subtitle1">
-                                    Forgot Password?
-                                </Typography>
                             </Grid>
                         </Grid>
                         {errors.submit && (
@@ -299,7 +331,7 @@ const FirebaseLogin = (props, {className, ...rest}) => {
                                 variant="contained"
                                 className={classes.login}
                             >
-                                Sign in
+                                Sign up
                             </Button>
                         </Box>
                     </form>
@@ -309,4 +341,4 @@ const FirebaseLogin = (props, {className, ...rest}) => {
     );
 };
 
-export default FirebaseLogin;
+export default RgisterForm;

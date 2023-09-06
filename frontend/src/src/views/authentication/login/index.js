@@ -4,16 +4,14 @@ import {Box, Card, CardContent, Divider, Grid, Hidden, makeStyles, Typography, u
 
 import Carousel from 'react-material-ui-carousel';
 
-//import JWTLogin from './JWTLogin';
-//import Auth0Login from './Auth0Login';
-import FirebaseLogin from './FirebaseLogin';
+import LoginFrom from './LoginForm';
 
-import logo from './../../../../assets/images/logo.svg';
-import AuthPattern from './../../../../assets/images/auth/auth-pattern.svg';
-import AuthBlue from './../../../../assets/images/auth/auth-blue.svg';
-import AuthPurple from './../../../../assets/images/auth/auth-purple.svg';
-import AuthBlueCard from './../../../../assets/images/auth/auth-blue-card.svg';
-import AuthPurpleCard from './../../../../assets/images/auth/auth-purple-card.svg';
+import logo from './../../../assets/images/logo.svg';
+import AuthPattern from './../../../assets/images/auth/auth-pattern.svg';
+import AuthBlue from './../../../assets/images/auth/auth-blue.svg';
+import AuthPurple from './../../../assets/images/auth/auth-purple.svg';
+import AuthBlueCard from './../../../assets/images/auth/auth-blue-card.svg';
+import AuthPurpleCard from './../../../assets/images/auth/auth-purple-card.svg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -220,7 +218,7 @@ const Login = () => {
                             <Grid item xs={12}>
                                 {/* <JWTLogin /> */}
                                 {/* <Auth0Login /> */}
-                                <FirebaseLogin />
+                                <LoginFrom />
                             </Grid>
                             <Grid item xs={12}>
                                 <Divider />

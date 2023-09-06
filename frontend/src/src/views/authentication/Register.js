@@ -2,9 +2,9 @@ import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import {Card, CardContent, Divider, Grid, Link, makeStyles, Typography, useMediaQuery, useTheme} from '@material-ui/core';
 
-import FirebaseLogin from '../login/FirebaseLogin';
+import RgisterForm from './register/RgisterForm';
 
-import logo from './../../../../assets/images/logo.svg';
+import logo from './../../assets/images/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,13 +43,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Login = () => {
+const Register = () => {
     const classes = useStyles();
     const theme = useTheme();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
-        <Grid container justifyContent={matchDownSM ? 'center' : 'space-between'} alignItems="center" className={classes.root}>
+        <Grid container justifyContent={matchDownSM ? 'center' : 'space-between'} alignItems="flex-start" className={classes.root}>
             <Grid item xs={12} sx={{minHeight: '100vh', height: '100%'}}>
                 <Grid
                     sx={{minHeight: '100vh', height: '100%', p: matchDownSM ? 0 : '0 80px'}}
@@ -84,7 +84,7 @@ const Login = () => {
                                                                 gutterBottom
                                                                 variant={matchDownSM ? 'h3' : 'h2'}
                                                             >
-                                                                Hi, Welcome Back
+                                                                Sign up
                                                             </Typography>
                                                         </Grid>
                                                     </Grid>
@@ -99,7 +99,7 @@ const Login = () => {
                                         </Grid>
                                     </Grid>
                                     <Grid item xs={12}>
-                                        <FirebaseLogin login={3} />
+                                        <RgisterForm />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Divider />
@@ -108,11 +108,11 @@ const Login = () => {
                                         <Grid item container direction="column" alignItems="center" xs={12}>
                                             <Typography
                                                 component={RouterLink}
-                                                to="/pages/register/register3"
+                                                to="/login"
                                                 variant="subtitle1"
                                                 className={classes.title}
                                             >
-                                                Don't have an account?
+                                                Having an account?
                                             </Typography>
                                         </Grid>
                                     </Grid>
@@ -129,7 +129,7 @@ const Login = () => {
                         alignItems="center"
                         spacing={matchDownSM ? 2 : 0}
                     >
-                        <Grid item>
+                       <Grid item>
                             <Typography component={Link} href='https://berrydashboard.io' target='_blanks' variant="subtitle1" color={theme.palette.grey[600]}>
                                 www.berrydashboard.io
                             </Typography>
@@ -146,4 +146,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

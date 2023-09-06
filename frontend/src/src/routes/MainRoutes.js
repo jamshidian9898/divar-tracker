@@ -5,8 +5,9 @@ import MainLayout from './../layout/MainLayout';
 
 
 const Dashboard = lazy(() => import('../views/dashboard/Default'));
-const Authentication = lazy(() => import('../views/setting/Authentication.js'));
-const Profile = lazy(() => import('../views/setting/Profile.js'));
+const Authentication = lazy(() => import('../views/setting/Authentication'));
+const Profile = lazy(() => import('../views/setting/Profile'));
+const Manage = lazy(() => import('../views/request/Manage'));
 
 const MainRoutes = () => {
     const location = useLocation();
@@ -23,7 +24,7 @@ const MainRoutes = () => {
                         <Route path="/dashboard" component={Dashboard} />
                         <Route path="/authentication" component={Authentication} />
                         <Route path="/profile" component={Profile} />
-                        <Route path="/request" component={Profile} />
+                        <Route path="/request" component={Manage} />
                 </Switch>
             </MainLayout>
         </Route>

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Card, CardHeader, Divider, Grid } from '@material-ui/core';
 
-import { gridSpacing } from '../../../../store/constant';
+import { gridSpacing } from '../../../store/constant';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -94,7 +94,8 @@ export default function RequestTable() {
                                                 <Button
                                                     color="primary"
                                                     className={classes.button}
-                                                    href={"/request/" + row.id}
+                                                    // href={"/request/" + row.id}
+                                                    href={"/request"}
                                                 >
                                                     more
                                                 </Button>
