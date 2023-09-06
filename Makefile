@@ -1,6 +1,6 @@
 # -------------------global commands-------------------
 stop:
-	docker-compose stop
+	docker-compose down
 start:
 	docker-compose up --detach
 destroy:
@@ -9,6 +9,8 @@ build:
 	docker-compose up --detach --build
 log:
 	docker-compose logs -f
+ps:
+	watch "docker-compose ps -a"
 
 
 
@@ -36,10 +38,16 @@ mysql-shell:
 
 
 
-# -------------------internal ui container commands-------------------
-ui-shell:
-	docker-compose exec ui sh
-ui-seed:
-	docker-compose exec ui php artisan db:seed
-ui-migrate:
-	docker-compose exec ui php artisan migrate:fresh
+# -------------------internal frontend container commands-------------------
+frontend-shell:
+	docker-compose exec frontend sh
+
+
+
+# -------------------internal backend container commands-------------------
+backend-shell:
+	docker-compose exec backend sh
+backend-seed:
+	docker-compose exec backend php artisan db:seed
+backend-migrate:
+	docker-compose exec backend php artisan migrate:fresh
