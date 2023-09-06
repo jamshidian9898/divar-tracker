@@ -38,12 +38,6 @@ mysql-shell:
 
 
 
-# -------------------internal frontend container commands-------------------
-frontend-shell:
-	docker-compose exec frontend sh
-
-
-
 # -------------------internal backend container commands-------------------
 backend-shell:
 	docker-compose exec backend sh
