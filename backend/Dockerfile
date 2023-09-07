@@ -3,7 +3,7 @@ FROM jamshidian9898/laravel-nginx:latest
 # set composer related environment variables
 ENV PATH="/composer/vendor/bin:$PATH" \
     COMPOSER_ALLOW_SUPERUSER=1 \
-    COMPOSER_VENDOR_DIR=/var/www/vendor \
+    COMPOSER_VENDOR_DIR=/var/www/app/vendor \
     COMPOSER_HOME=/composer
 
 # install composer

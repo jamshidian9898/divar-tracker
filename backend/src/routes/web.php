@@ -12,16 +12,18 @@
 */
 
 use App\Livewire\Auth\Login;
-use App\Livewire\Authentication\Authentication;
 use App\Livewire\Dashboard\Dashboard;
-use App\Livewire\Requests\Index;
-use App\Livewire\Setting\Setting;
+use App\Livewire\Index\Index;
+use App\Livewire\Profile\Authentication;
+use App\Livewire\Profile\Setting;
 
-Route::get('/', Dashboard::class)->name('dashboard');
+Route::get('/', Index::class)->name('index');
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Login::class)->name('register');
 
 Route::get('/dashboard', Dashboard::class)->name('dashboard');
-Route::get('/requests', Index::class)->name('requests');
+Route::prefix('/requests')->group(function () {
+    Route::get('/', Index::class)->name('requests.list');
+});
 Route::get('/authentication', Authentication::class)->name('authentication');
 Route::get('/setting', Setting::class)->name('setting');
