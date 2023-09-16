@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{ url('assets/compiled/css/auth-forgot-password.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app-dark.css') }}" />
+    @livewireStyles
+    @livewireScripts
 </head>
 
 <body>

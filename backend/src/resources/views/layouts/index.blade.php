@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url('assets/compiled/css/layout-rtl-backup.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app-dark.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app.css') }}" />
+    @livewireStyles
+    @livewireScripts
 </head>
 
 <body>

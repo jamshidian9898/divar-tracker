@@ -5,32 +5,19 @@
                 <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo" /></a>
             </div>
             <div class="header-top-right">
-                <div class="dropdown">
-                    <a href="#" id="topbarUserDropdown"
-                        class="user-dropdown d-flex align-items-center dropend dropdown-toggle"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="avatar avatar-md2">
-                            <img src="./assets/compiled/jpg/1.jpg" alt="Avatar" />
-                        </div>
-                        <div class="text">
-                            <h6 class="user-dropdown-name">John Ducky</h6>
-                            <p class="user-dropdown-status text-sm text-muted">
-                                Member
-                            </p>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow-lg"
-                        aria-labelledby="topbarUserDropdown">
-                        <li><a class="dropdown-item" href="#">My Account</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li>
-                            <hr class="dropdown-divider" />
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="auth-login.html">Logout</a>
-                        </li>
-                    </ul>
-                </div>
+                @auth
+                    <livewire:utils.user-info-short />
+                @endauth
+                @guest
+                    <div class="bg-light btn-group rounded-5" role="group" aria-label="Basic example">
+                        <a href="{{ route('register') }}" class="btn btn-primary rounded-5 z-1">
+                            register
+                        </a>
+                        <a href="{{ route('login') }}" class="btn btn-light rounded-5">
+                            login
+                        </a>
+                    </div>
+                @endauth
 
                 <!-- Burger button responsive -->
                 <a href="#" class="burger-btn d-block d-xl-none">
@@ -124,28 +111,24 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="extra-component-avatar.html"
-                                                class="subsubmenu-link">Avatar</a>
+                                            <a href="extra-component-avatar.html" class="subsubmenu-link">Avatar</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="extra-component-sweetalert.html"
-                                                class="subsubmenu-link">Sweet Alert</a>
+                                            <a href="extra-component-sweetalert.html" class="subsubmenu-link">Sweet
+                                                Alert</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="extra-component-toastify.html"
-                                                class="subsubmenu-link">Toastify</a>
+                                            <a href="extra-component-toastify.html" class="subsubmenu-link">Toastify</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="extra-component-rating.html"
-                                                class="subsubmenu-link">Rating</a>
+                                            <a href="extra-component-rating.html" class="subsubmenu-link">Rating</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="extra-component-divider.html"
-                                                class="subsubmenu-link">Divider</a>
+                                            <a href="extra-component-divider.html" class="subsubmenu-link">Divider</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -204,33 +187,28 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-input.html"
-                                                class="subsubmenu-link">Input</a>
+                                            <a href="form-element-input.html" class="subsubmenu-link">Input</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-input-group.html"
-                                                class="subsubmenu-link">Input Group</a>
+                                            <a href="form-element-input-group.html" class="subsubmenu-link">Input
+                                                Group</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-select.html"
-                                                class="subsubmenu-link">Select</a>
+                                            <a href="form-element-select.html" class="subsubmenu-link">Select</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-radio.html"
-                                                class="subsubmenu-link">Radio</a>
+                                            <a href="form-element-radio.html" class="subsubmenu-link">Radio</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-checkbox.html"
-                                                class="subsubmenu-link">Checkbox</a>
+                                            <a href="form-element-checkbox.html" class="subsubmenu-link">Checkbox</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-element-textarea.html"
-                                                class="subsubmenu-link">Textarea</a>
+                                            <a href="form-element-textarea.html" class="subsubmenu-link">Textarea</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -245,8 +223,7 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="form-validation-parsley.html"
-                                                class="subsubmenu-link">Parsley</a>
+                                            <a href="form-validation-parsley.html" class="subsubmenu-link">Parsley</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -257,13 +234,11 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="form-editor-quill.html"
-                                                class="subsubmenu-link">Quill</a>
+                                            <a href="form-editor-quill.html" class="subsubmenu-link">Quill</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-editor-ckeditor.html"
-                                                class="subsubmenu-link">CKEditor</a>
+                                            <a href="form-editor-ckeditor.html" class="subsubmenu-link">CKEditor</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
@@ -272,8 +247,7 @@
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="form-editor-tinymce.html"
-                                                class="subsubmenu-link">TinyMCE</a>
+                                            <a href="form-editor-tinymce.html" class="subsubmenu-link">TinyMCE</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -321,18 +295,15 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="ui-widgets-chatbox.html"
-                                                class="subsubmenu-link">Chatbox</a>
+                                            <a href="ui-widgets-chatbox.html" class="subsubmenu-link">Chatbox</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="ui-widgets-pricing.html"
-                                                class="subsubmenu-link">Pricing</a>
+                                            <a href="ui-widgets-pricing.html" class="subsubmenu-link">Pricing</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="ui-widgets-todolist.html"
-                                                class="subsubmenu-link">To-do List</a>
+                                            <a href="ui-widgets-todolist.html" class="subsubmenu-link">To-do List</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -343,8 +314,8 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="ui-icons-bootstrap-icons.html"
-                                                class="subsubmenu-link">Bootstrap Icons
+                                            <a href="ui-icons-bootstrap-icons.html" class="subsubmenu-link">Bootstrap
+                                                Icons
                                             </a>
                                         </li>
 
@@ -354,8 +325,7 @@
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="ui-icons-dripicons.html"
-                                                class="subsubmenu-link">Dripicons</a>
+                                            <a href="ui-icons-dripicons.html" class="subsubmenu-link">Dripicons</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -366,13 +336,11 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="ui-chart-chartjs.html"
-                                                class="subsubmenu-link">ChartJS</a>
+                                            <a href="ui-chart-chartjs.html" class="subsubmenu-link">ChartJS</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="ui-chart-apexcharts.html"
-                                                class="subsubmenu-link">Apexcharts</a>
+                                            <a href="ui-chart-apexcharts.html" class="subsubmenu-link">Apexcharts</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -399,13 +367,12 @@
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="auth-register.html"
-                                                class="subsubmenu-link">Register</a>
+                                            <a href="auth-register.html" class="subsubmenu-link">Register</a>
                                         </li>
 
                                         <li class="subsubmenu-item">
-                                            <a href="auth-forgot-password.html"
-                                                class="subsubmenu-link">Forgot Password</a>
+                                            <a href="auth-forgot-password.html" class="subsubmenu-link">Forgot
+                                                Password</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -439,8 +406,7 @@
                                     <!-- 3 Level Submenu -->
                                     <ul class="subsubmenu">
                                         <li class="subsubmenu-item">
-                                            <a href="ui-map-google-map.html"
-                                                class="subsubmenu-link">Google Map</a>
+                                            <a href="ui-map-google-map.html" class="subsubmenu-link">Google Map</a>
                                         </li>
 
                                         <li class="subsubmenu-item">

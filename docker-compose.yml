@@ -39,6 +39,9 @@ services:
     restart: always
     networks:
       - default
+    ports:
+      - 8000:80
+
 
   backend:
     build: ./backend

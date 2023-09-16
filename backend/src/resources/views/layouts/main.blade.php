@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url('assets/compiled/css/layout-rtl-backup.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app-dark.css') }}" />
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app.css') }}" />
+    @livewireStyles
+    @livewireScripts
 </head>
 
 <body>
@@ -22,14 +24,24 @@
     <div id="app">
         @include('utiles.sidebar')
         <div id="main">
-            <header class="mb-3">
-                <a href="#" class="burger-btn d-block d-xl-none">
-                    <i class="bi bi-justify fs-3"></i>
-                </a>
-            </header>
+            <div class="layout-horizontal">
+                <header class="mb-5">
+                    <div class="header-top">
+                        <div class="container">
+                            <div class="logo">
+                                {{-- <a href="index.html"><img src="./assets/compiled/svg/logo.svg" alt="Logo" /></a> --}}
+                            </div>
+                            <div class="header-top-right">
+                                <livewire:utils.user-info-short />
 
-            <div class="page-heading">
-                <h3>Profile Statistics</h3>
+                                <!-- Burger button responsive -->
+                                <a href="#" class="burger-btn d-block d-xl-none">
+                                    <i class="bi bi-justify fs-3"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
             </div>
             <div class="page-content">
                 {{ $slot }}

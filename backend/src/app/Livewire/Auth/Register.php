@@ -16,12 +16,12 @@ class Register extends Component
 
     #[Rule('required|min:8')]
     public $password;
+
     #[Rule('required|min:8|same:password')]
     public $passwordConfirmation;
 
     public function register()
     {
-        sleep(2);
         $this->validate();
 
         if (User::where('email', $this->email)->exists()) {
@@ -31,14 +31,20 @@ class Register extends Component
         try {
 
             DB::beginTransaction();
+
             $user = User::create([
                 'email' => $this->email,
                 'password' => Hash::make($this->password),
             ]);
 
+            $user->name = 'user#' . $this->id;
+            $user->save();
+
             Auth::login($user);
+
             DB::commit();
 
+            return redirect()->route('dashboard');
         } catch (\Throwable $th) {
 
             DB::rollBack();
