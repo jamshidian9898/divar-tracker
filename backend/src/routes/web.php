@@ -20,6 +20,7 @@ use App\Livewire\Profile\Authentication;
 use App\Livewire\Profile\Setting;
 use App\Livewire\Requests\Index as RequestsIndex;
 use App\Livewire\Requests\Show as RequestsShow;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', Index::class)->name('index');
 
