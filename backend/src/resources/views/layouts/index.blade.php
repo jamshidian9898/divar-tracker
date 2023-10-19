@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app.css') }}" />
     @livewireStyles
     @livewireScripts
+    <livewire:utils.toast />
+
 </head>
 
 <body>

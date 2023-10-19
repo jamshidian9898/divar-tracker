@@ -18,6 +18,7 @@ use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Index\Index;
 use App\Livewire\Profile\Authentication;
 use App\Livewire\Profile\Setting;
+use App\Livewire\Requests\Create as RequestsCreate;
 use App\Livewire\Requests\Index as RequestsIndex;
 use App\Livewire\Requests\Show as RequestsShow;
 use Illuminate\Support\Facades\Route;

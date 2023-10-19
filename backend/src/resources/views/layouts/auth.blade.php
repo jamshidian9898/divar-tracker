@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ url('assets/compiled/css/app-dark.css') }}" />
     @livewireStyles
     @livewireScripts
+    <livewire:utils.toast />
+
 </head>
 
 <body>

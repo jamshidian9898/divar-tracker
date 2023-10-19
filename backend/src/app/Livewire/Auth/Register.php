@@ -25,6 +25,7 @@ class Register extends Component
         $this->validate();
 
         if (User::where('email', $this->email)->exists()) {
+            $this->dispatch('toastify:error',message:'email already exists. login please.');
             return false;
         }
 
@@ -37,7 +38,7 @@ class Register extends Component
                 'password' => Hash::make($this->password),
             ]);
 
-            $user->name = 'user#' . $this->id;
+            $user->name = 'user#' . $user->id;
             $user->save();
 
             Auth::login($user);
@@ -46,8 +47,8 @@ class Register extends Component
 
             return redirect()->route('dashboard');
         } catch (\Throwable $th) {
-
             DB::rollBack();
+            dd($th);
         }
     }
 

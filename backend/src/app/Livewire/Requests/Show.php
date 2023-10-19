@@ -8,6 +8,7 @@ class Show extends Component
 {
     public function render()
     {
-        return view('livewire.requests.show');
+        return view('livewire.requests.show')
+        ->layout('layouts.main');
     }
 }
